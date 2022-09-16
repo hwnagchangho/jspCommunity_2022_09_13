@@ -1,5 +1,6 @@
 package com.sbs.exam;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,12 +16,15 @@ public class GugudanServlet extends HttpServlet { // extends HttpServlet을 해�
 
     Rq rq = new Rq(req, resp);
 
-    int dan = rq.getIntParam("dan", 0);
-    int limit = rq.getIntParam("limit", 0);
+    int dan = rq.getIntParam("dan", 9);
+    int limit = rq.getIntParam("limit", 9);
 
-    rq.appendBody("<h1>%d단</h1>".formatted(dan));
-    for (int i = 1; i <= limit; i++) {
-      rq.appendBody("<div>%d * %d = %d</div>\n".formatted(dan, i, dan * i));
-    }
+    req.setAttribute("dan", dan);
+    req.setAttribute("limit", limit);
+
+    // gugudan2.jsp 에게 나머지 작업을 토스
+    RequestDispatcher requestDispatcher = req.getRequestDispatcher("/gugudan2.jsp");
+    requestDispatcher.forward(req, resp);
+
   }
 }
