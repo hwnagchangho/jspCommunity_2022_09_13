@@ -1,5 +1,6 @@
-package com.sbs.exam;
+package com.sbs.exam.gugudan;
 
+import com.sbs.exam.Rq;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
