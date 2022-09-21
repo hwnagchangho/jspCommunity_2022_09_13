@@ -20,8 +20,8 @@ public class ArticleListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     String url = "jdbc:mysql://127.0.0.1:3306/Jsp_Community?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull";
-    String user = "sbsst";
-    String password = "sbs123414";
+    String user = "changho";
+    String password = "dhtwo19843";
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
@@ -41,7 +41,8 @@ public class ArticleListServlet extends HttpServlet {
       String sql = "SELECT * FROM article";
       List<Map<String, Object>> articleRows = dbUtil.selectRows(con, sql);
 
-      resp.getWriter().append(articleRows.toString());
+      req.setAttribute("articleRows", articleRows);
+      req.getRequestDispatcher("../article/list.jsp").forward(req,resp);
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {

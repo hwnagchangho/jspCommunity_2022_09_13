@@ -16,7 +16,7 @@ public class GugudanServlet extends HttpServlet { // extends HttpServlet을 해�
 
     Rq rq = new Rq(req, resp);
 
-    int dan = rq.getIntParam("dan", 9);
+    int dan = rq.getIntParam("dan", 9); // defaultValue 값이 Object로 던져진다.
     int limit = rq.getIntParam("limit", 9);
 
     req.setAttribute("dan", dan);

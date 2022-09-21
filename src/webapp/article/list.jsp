@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Map"%>
+
+<%
+List<Map<String, Object>> articleRows = (List<Map<String, Object>>) request.getAttribute("articleRows");
+%>
+
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 리스트</title>
+</head>
+<body>
+    <h1>게시물 리스트 V1</h1>
+    <ul>
+        <li><%= (int) articleRows.get(0).get("id")%>번, <%=(String) articleRows.get(0).get("regDate")%>, <%=(String) articleRows.get(0).get("title")%></li>
+        <li><%= (int) articleRows.get(1).get("id")%>번, <%=(String) articleRows.get(1).get("regDate")%>, <%=(String) articleRows.get(1).get("title")%></li>
+        <li><%= (int) articleRows.get(2).get("id")%>번, <%=(String) articleRows.get(2).get("regDate")%>, <%=(String) articleRows.get(2).get("title")%></li>
+    </ul>
+
+    <h1>게시물 리스트 V2</h1>
+        <ul>
+            <%
+            for(int i = 0; i < 3; i++){
+            %>
+            <li><%= (int) articleRows.get(i).get("id")%>번, <%=(String) articleRows.get(i).get("regDate")%>, <%=(String) articleRows.get(i).get("title")%></li>
+            <%
+            }
+            %>
+        </ul>
+    <h1>게시물 리스트 V3</h1>
+        <ul>
+            <%
+            for(int i = 0; i < 3; i++){
+                Map<String, Object> articleRow = articleRows.get(i);
+            %>
+            <li><%= (int) articleRow.get("id")%>번, <%=(String) articleRow.get("regDate")%>, <%=(String) articleRow.get("title")%></li>
+            <%
+            }
+            %>
+        </ul>
+    <h1>게시물 리스트 V4</h1>
+        <ul>
+            <%
+            for(int i = 0; i < articleRows.size(); i++){
+                Map<String, Object> articleRow = articleRows.get(i);
+            %>
+            <li><%= (int) articleRow.get("id")%>번, <%=(String) articleRow.get("regDate")%>, <%=(String) articleRow.get("title")%></li>
+            <%
+            }
+            %>
+        </ul>
+    <h1>게시물 리스트 V5</h1>
+    <ul>
+        <%
+        for(Map<String, Object> articleRow : articleRows){
+        %>
+        <li><%= (int) articleRow.get("id")%>번, <%=(String) articleRow.get("regDate")%>, <%=(String) articleRow.get("title")%></li>
+        <%
+        }
+        %>
+    </ul>
+</body>
+</html>
