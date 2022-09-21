@@ -1,6 +1,7 @@
 package com.sbs.exam.servlet;
 
 import com.sbs.exam.util.DBUtil;
+import com.sbs.exam.util.SecSql;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +23,6 @@ public class ArticleDetailServlet extends HttpServlet {
     String user = "changho";
     String password = "dhtwo19843";
 
-    int id = Integer.parseInt(req.getParameter("id"));
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
@@ -38,9 +38,12 @@ public class ArticleDetailServlet extends HttpServlet {
     try {
       con = DriverManager.getConnection(url, user, password);
 
+      int id = Integer.parseInt(req.getParameter("id"));
 
+      SecSql sql = SecSql.from("SELECT *");
+      sql.append("FROM article");
+      sql.append("WHERE id = ?", id);
 
-      String sql = String.format("SELECT * FROM article WHERE id = %d", id);
       Map<String, Object> articleRow = DBUtil.selectRow(con, sql);
 
       req.setAttribute("articleRow", articleRow);
