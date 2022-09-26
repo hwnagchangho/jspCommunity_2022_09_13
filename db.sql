@@ -12,7 +12,6 @@ CREATE TABLE article (
 	`body` LONGTEXT NOT NULL
 );
 
-SELECT * FROM article;
 
 # 게시물 테이블 데이터 생성
 INSERT INTO article
@@ -32,3 +31,9 @@ SET regDate = NOW(),
 updateDate = NOW(),
 title = '제목3',
 `body` = '내용3';
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = CONCAT('제목__', RAND()),
+`body` = CONCAT('내용__', RAND());
