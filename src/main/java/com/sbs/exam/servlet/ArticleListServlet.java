@@ -46,7 +46,7 @@ public class ArticleListServlet extends HttpServlet {
       SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
       sql.append("FROM article");
 
-      int itemInAPage = 20;
+      int itemInAPage = 10;
       int limitFrom = (page - 1) * itemInAPage;
 
       int totalCount = DBUtil.selectRowIntValue(con, sql);
