@@ -54,10 +54,10 @@
     </script>
 
     <form action="doJoin" method="POST" onsubmit="JoinForm__submit(this); return false;">
-        <div>아이디 : <input autocomplete="off" placeholder="아이디를 입력해주세요." name="loginId" type="text"></div>
-        <div>비밀번호 : <input autocomplete="off" placeholder="비밀번호를 입력해주세요." name="loginPw" type="password"></div>
-        <div>비밀번호 확인 : <input autocomplete="off" placeholder="비밀번호 확인 입력해주세요." name="loginPwConfirm" type="password"></div>
-        <div>이름 : <input autocomplete="off" placeholder="이름 입력해주세요." name="name" type="text"></div>
+        <div>아이디 : <input autocomplete="on" placeholder="아이디를 입력해주세요." name="loginId" type="text"></div>
+        <div>비밀번호 : <input autocomplete="on" placeholder="비밀번호를 입력해주세요." name="loginPw" type="password"></div>
+        <div>비밀번호 확인 : <input autocomplete="on" placeholder="비밀번호 확인 입력해주세요." name="loginPwConfirm" type="password"></div>
+        <div>이름 : <input autocomplete="on" placeholder="이름 입력해주세요." name="name" type="text"></div>
 
         <div>
           <button type="submit">가입</button>

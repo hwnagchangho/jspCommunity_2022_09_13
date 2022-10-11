@@ -45,7 +45,18 @@ public class MemberDoJoinServlet extends HttpServlet {
       String loginPw = req.getParameter("loginPw");
       String name = req.getParameter("name");
 
-      SecSql sql = SecSql.from("INSERT INTO member");
+      SecSql sql = SecSql.from("SELECT COUNT(*) AS CNT");
+      sql.append("FROM member");
+      sql.append("WHERE loginid = ? ", loginId);
+
+      boolean isJoinAvailableLoginId = DBUtil.selectRowIntValue(con, sql) == 0;
+
+      if( isJoinAvailableLoginId == false ){
+        resp.getWriter().append(String.format("<script> alert('%s는 이미 사용중인 로그인 아이디 입니다.'); history.back(); </script>",loginId));
+        return;
+      }
+
+      sql = SecSql.from("INSERT INTO member");
       sql.append("SET regDate = NOW()");
       sql.append(", updateDate = NOW()");
       sql.append(", loginId = ?", loginId);
