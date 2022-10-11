@@ -17,7 +17,7 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
         <input type="hidden" autocomplete"off" name="id" value="${param.id}">
 
         <div>번호 :  <%= (int) articleRow.get("id")%></div>
-        <div>날짜 :  <%= (String) articleRow.get("regDate")%></div>
+        <div>날짜 :  <%= (String) articleRow.get("updateDate")%></div>
         <div>제목 :  <input name="title" placeholder="제목을 입력해주세요." value="<%= (String) articleRow.get("title")%>" type="text"></div>
         <div>내용 :  <textarea name="body" placeholder="내용을 입력해주세요."><%= (String) articleRow.get("body")%></textarea></div>
         <div>
